@@ -170,65 +170,6 @@ for (const file of imageFiles) {
 }
 ```
 
-## Technical Specifications
-
-### Performance Metrics
-- **Model Load Time**: ~2-5 seconds (first-time only)
-- **Inference Speed**: 50-100ms per frame on modern GPUs
-- **Memory Usage**: ~100MB for loaded models
-- **Accuracy**: 85-95% on diverse datasets (model-dependent)
-
-### Detection Pipeline
-1. **Face Detection**: TinyFaceDetector or SSD Mobilenetv1
-2. **Landmark Extraction**: 68-point facial landmarks
-3. **Descriptor Generation**: 512D face embedding vector
-4. **Similarity Matching**: Euclidean distance comparison
-5. **Threshold Application**: Configurable confidence filtering
-
-### Browser Compatibility
-- **Chrome/Edge**: Full support with WebGL acceleration
-- **Firefox**: Full support (slower without WebGL)
-- **Safari**: Limited support (iOS 15+ with WebGL)
-- **Mobile**: Android Chrome, iOS Safari (camera permissions required)
-
-### Model Configuration
-```javascript
-// Face detection models
-await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-await faceapi.nets.ssdMobilenetv1.loadFromUri('/models');
-
-// Feature extraction models
-await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
-await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
-```
-
-## Configuration Options
-
-### Recognition Settings
-- **Detection Model**: TinyFaceDetector (fast) vs SSD Mobilenetv1 (accurate)
-- **Confidence Threshold**: 0.5-0.9 (higher = stricter matching)
-- **Input Size**: 128x128 to 512x512 (affects speed vs accuracy)
-- **Max Faces**: Limit concurrent face processing
-
-### UI Preferences
-- **Theme Mode**: System, Light, or Dark
-- **Overlay Style**: Bounding boxes with confidence colors
-- **Export Format**: JSON or CSV for batch results
-- **Language**: English (extensible for i18n)
-
-## Limitations & Considerations
-
-### Technical Constraints
-- **Browser Dependence**: Requires modern browser with WebGL support
-- **Hardware Requirements**: GPU acceleration recommended for real-time performance
-- **Model Size**: ~20MB download for face-api.js models
-- **Memory Limits**: Large batch processing may hit browser memory limits
-
-### Privacy Considerations
-- **Local Processing**: All operations happen in browser sandbox
-- **No Telemetry**: Optional server logging can be disabled
-- **Data Persistence**: Face data stored locally or server-side (hashed)
-- **Session Cleanup**: Automatic cleanup on browser close
 
 ## Troubleshooting
 
@@ -276,9 +217,6 @@ Contributions welcome! Focus areas:
 - Internationalization support
 - Accessibility improvements
 
-## License
-
-MIT License - see LICENSE file for details.
 
 ## Acknowledgments
 
